@@ -27,7 +27,7 @@
 To start using the app server, install Go and run `go get`:
 
 ```sh
-$ go get github.com/shopwareLabs/GoAppserver
+$ go get github.com/matthiasbruns/GoAppserver
 ```
 
 ### Storage engines
@@ -143,7 +143,7 @@ import (
    "log"
    "net/http"
    
-   appserver "github.com/shopwareLabs/GoAppserver"
+   appserver "github.com/matthiasbruns/GoAppserver"
 )
 
 func main() {

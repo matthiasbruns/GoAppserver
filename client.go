@@ -54,6 +54,28 @@ func (c *APIClient) Request(method string, path string, payload interface{}) (*h
 	return c.httpClient.Do(req)
 }
 
+func (c *APIClient) StoreApiRequest(apiKey string, method string, path string, payload interface{}) (*http.Response, error) {
+	var pdata []byte
+	if payload != nil {
+		if d, err := json.Marshal(payload); err != nil {
+			return nil, fmt.Errorf("encode payload: %v", err)
+		} else {
+			pdata = d
+		}
+	}
+
+	req, err := retryablehttp.NewRequest(method, c.credentials.ShopURL+path, pdata)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("accept", "application/json")
+	req.Header.Set("content-type", "application/json")
+	req.Header.Set("sw-access-key", apiKey)
+
+	return c.httpClient.Do(req)
+}
+
 func (c *APIClient) GetAppConfig() (map[string]interface{}, error) {
 	resp, err := c.Request(http.MethodGet, "/api/_action/system-config?domain="+c.appName+".config", nil)
 	if err != nil {

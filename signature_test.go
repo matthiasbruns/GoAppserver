@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	appserver "github.com/shopwareLabs/GoAppserver"
+	appserver "github.com/matthiasbruns/GoAppserver"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

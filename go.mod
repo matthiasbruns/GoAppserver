@@ -1,4 +1,4 @@
-module github.com/shopwareLabs/GoAppserver
+module github.com/matthiasbruns/GoAppserver
 
 go 1.16
 
